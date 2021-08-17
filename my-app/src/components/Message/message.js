@@ -3,6 +3,6 @@ import './message.css';
 
 export const Message = (props) => {
   return(
-    <span className='message' >{props.label} </span>
+    <p className='message' >{props.label} </p>
   )
 }
