@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import {MessageList} from "./components/MessageList/messageList";
 import './App.css';
+import { AddMessage } from "./components/AddMessage/addMessage";
+import { useAddMessage } from "./components/hooks/useAddMessage";
+import { useAnswer } from "./components/hooks/useAnswer";
+
 
 function App() {
+  const message = useAddMessage();
+  const answer = useAnswer(()=>{
+    const lastMessage = message.messageList[message.messageList.length - 1]
+    if(lastMessage.author ===  'user'){
+      message.addMessage('Привествую!', 'robot');
+    }
+  },[message.messageList])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className = "wrapper">
+      <MessageList messages = {message.messageList} />
+      </div>
+      <AddMessage onSubmit = {message.addMessage}/>
     </div>
-  );
+  )
 }
 
 export default App;
