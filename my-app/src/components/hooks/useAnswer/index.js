@@ -1,6 +1,5 @@
-
-import React, {useEffect, useRef} from "react";
-
+import {useEffect, useRef} from "react";
+import PropTypes from 'prop-types';
 
 export const useAnswer = (fn, dependencies) => {
 
@@ -13,9 +12,13 @@ export const useAnswer = (fn, dependencies) => {
     }
 
     if (mounted.current) {
-      fn()
+      fn();
     } else {
       mounted.current = true;
     }
   }, dependencies);
 }
+useAnswer.propTypes = {
+  fn: PropTypes.func.isRequired,
+  dependencies: PropTypes.array
+};

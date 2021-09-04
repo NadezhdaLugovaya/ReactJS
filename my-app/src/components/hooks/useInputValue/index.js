@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 
 export const useInputValue = (defaultValue = '') => {
@@ -11,5 +12,9 @@ export const useInputValue = (defaultValue = '') => {
     },
     clean: () => setValue(''),
     value: () => value
-  }
+  };
 }
+
+useInputValue.propTypes = {
+  defaultValue: PropTypes.string
+};

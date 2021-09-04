@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export const useAddMessage = () => {
   const [messageList, setMessageList] = useState([]);
@@ -7,14 +7,15 @@ export const useAddMessage = () => {
     setMessageList(
       messageList.concat([
         {
+          id: Date.now(),
           text: title,
           author: name
         }
       ])
     )
-  }
+  };
   return {
     messageList,
     addMessage
-  }
+  };
 }
