@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import {MessageList} from "./components/MessageList/messageList";
+import { AddMessage } from "./components/AddMessage/addMessage";
+import { useAddMessage } from "./components/hooks/useAddMessage";
+import { useChatList } from "./components/hooks/useChatList"
+import { useAnswer } from "./components/hooks/useAnswer";
+import {ChatList} from "./components/ChatList/ChatList";
 
 function App() {
+  const message = useAddMessage();
+  const chat = useChatList();
+  const answer = useAnswer(()=>{
+    const lastMessage = message.messageList[message.messageList.length - 1]
+    if(lastMessage.author ===  'user'){
+      message.addMessage('Привествую!', 'robot');
+    }
+  },[message.messageList]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className = "wrapper">
+      <div className = "chat">
+          <ChatList chats = {chat.chatList} />
+        </div>
+        <div className = "message">
+          <MessageList messages = {message.messageList} />
+          <AddMessage onSubmit = {message.addMessage}/>
+        </div>
+        
+      </div>
     </div>
   );
 }
