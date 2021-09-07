@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './messageItem.css';
 
 export const MessageItem = ({message}) => {
-  
   const classes = [];
   if (message.author === 'user'){
     classes.push('user-message');
@@ -14,6 +13,7 @@ export const MessageItem = ({message}) => {
     <li className = {classes.join(' ')}>
      <span>{message.text}</span> 
     </li>
+    
   );
 }
 

@@ -9,7 +9,7 @@ export const ChatList = (props) => {
   return(
     <List >
       {props.chats.map(chat => {
-        return <ChatItem chat = {chat} key = {chat.id}/>
+        return <ChatItem chat = {chat} key = {chat.id} />
       })} 
     </List>
   );

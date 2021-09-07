@@ -1,7 +1,5 @@
 li{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 230px;
 
   border: 1px solid #ccc;
   border-radius: 20px;

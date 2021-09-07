@@ -15,6 +15,7 @@ export const useAddMessage = () => {
     )
   };
   return {
+    setMessageList,
     messageList,
     addMessage
   };

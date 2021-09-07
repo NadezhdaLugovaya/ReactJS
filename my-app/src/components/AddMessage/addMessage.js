@@ -5,13 +5,13 @@ import { makeStyles} from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './addMessage.css';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     '& > *': {
       width: '25ch',
       padding: '6.656px',
-      marginTop: '18px',
-      fontSize: '25px'
+      marginTop: '10px',
+      fontSize: '22px'
     },
   },
 }));
